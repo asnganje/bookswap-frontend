@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center bg-gradient-to-br from-slate-900/90 via-gray-900/80 to-slate-900/90 text-white p-8 rounded-lg">
+    <section className="min-h-[90vh] flex items-center bg-gradient-to-br from-slate-900/90 via-gray-900/80 to-slate-900/90 text-white px-8 py-25 md:py-8">
       <div className="max-w-7xl mx-auto pz-6 grid md:grid-cols-2 gap-16">
         <MotionWrapper>
           <h1 className="tex-6xl font-extrabold leading-tight">
