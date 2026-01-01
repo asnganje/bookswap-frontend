@@ -15,7 +15,7 @@ const InputField = ({
         onChange={onChange}
         placeholder={placeHolder}
         required={required}
-        className="px-4 py-3 rounded-xl bg-slate-300 border border-white/10 text-white outline-none focus:ring-2 focus:ring-blue-300"
+        className="px-4 py-3 rounded-xl bg-slate-300 border border-white/10 text-gray-600 outline-none focus:ring-2 focus:ring-blue-300"
       />
     </div>
   )

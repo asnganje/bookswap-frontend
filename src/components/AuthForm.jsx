@@ -1,8 +1,8 @@
 import MotionWrapper from "./MotionWrapper";
 
-const AuthForm = ({title, children, onSubmit, btnText}) => {
+const AuthForm = ({title, children, onSubmit, btnText, footer}) => {
   return(
-    <MotionWrapper.form
+    <form
       onSubmit={onSubmit}
       className="bg-gray-900 border border-white/10 rounded-3xl p-10 w-full max-w-md"
     >
@@ -14,7 +14,8 @@ const AuthForm = ({title, children, onSubmit, btnText}) => {
       >
         {btnText}
       </button>
-    </MotionWrapper.form>
+      {footer && <div className="mt-6 text-sm text-white">{footer}</div>}
+    </form>
   )
 }
 
