@@ -19,17 +19,17 @@ const Login = () => {
     
   }
   return(
-    <section className="min-h-screen">
+    <section className="">
       <Navbar />
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-dark to-slate-900 px-6">
         <AuthForm
-          title="Welcome back!"
+          title="LOGIN"
           onSubmit={submitHandler}
           btnText="Login"
           footer={
             <>
-              Don't have an account? {" "}
-              <Link to="/signup" className="text-blue-300">
+              Don't have an account? {"  "}
+              <Link to="/register" className="text-blue-300">
                 Signup
               </Link>
             </>
