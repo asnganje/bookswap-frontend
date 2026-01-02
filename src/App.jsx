@@ -22,7 +22,7 @@ function App() {
           element={<Login />}
         />
         <Route
-          path = "/signup"
+          path = "/register"
           element={<Signup />}
         />
       </Routes>
