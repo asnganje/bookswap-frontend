@@ -22,7 +22,7 @@ const Login = () => {
   return(
     <MotionWrapper className="">
       <Navbar />
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-dark to-slate-900 px-6">
+      <div className="min-h-[90vh] flex items-center justify-center bg-linear-to-br from-dark to-slate-900 pt-5 px-6">
         <AuthForm
           title="LOGIN"
           onSubmit={submitHandler}

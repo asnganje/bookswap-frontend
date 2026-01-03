@@ -78,8 +78,12 @@ const AddBookModal = ({isOpen, onClose}) => {
               className="text-sm cursor-pointer w-1/2"
             />
           </div>
-          
         </div>
+        <button
+          className="w-full bg-blue-300 text-white py-3 rounded-xl font-semibold hover:opacity-90 transition cursor-pointer"
+        >
+          Add Book
+        </button>
       </form>
     </Modal>
   )
