@@ -4,6 +4,7 @@ import AuthForm from "../components/AuthForm";
 import { Link } from "react-router-dom";
 import InputField from "../components/InputField"
 import { useState } from "react";
+import MotionWrapper from "../components/MotionWrapper";
 
 const Login = () => {
   const [email, setEmail] = useState("")
@@ -19,7 +20,7 @@ const Login = () => {
     
   }
   return(
-    <section className="">
+    <MotionWrapper className="">
       <Navbar />
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-dark to-slate-900 px-6">
         <AuthForm
@@ -52,7 +53,7 @@ const Login = () => {
         </AuthForm>
       </div>
       <Footer />
-    </section>
+    </MotionWrapper>
   )
 }
 

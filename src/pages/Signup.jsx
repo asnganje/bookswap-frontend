@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import InputField from "../components/InputField";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import MotionWrapper from "../components/MotionWrapper";
 
 const Signup = () => {
   const [fullname, setFullname] = useState("")
@@ -27,7 +28,7 @@ const Signup = () => {
   }
 
   return(
-    <section className="">
+    <MotionWrapper className="">
       <Navbar />
       <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-dark to-slate-900 px-6 pt-20 pb-5">
         <AuthForm 
@@ -64,7 +65,7 @@ const Signup = () => {
         </AuthForm>
       </div>
       <Footer />
-    </section>
+    </MotionWrapper>
   )
 }
 
