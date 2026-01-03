@@ -5,8 +5,13 @@ import success from "../assets/success.jpg"
 import edge from "../assets/edge.jpg"
 import artOfLove from "../assets/artOfLove.jpg"
 import BookCard from "../components/BookCard";
+import AddBookButton from "../components/AddBookButton";
+import { useState } from "react";
+import AddBookModal from "../components/AddBookModal";
 
 const Books = () => {
+  const [showBooksModal, setShowBooksModal] = useState("")
+
   const books = [
     {
       id:1,
@@ -44,7 +49,11 @@ const Books = () => {
         <h1 className="text-lg md:text-4xl pt-4 md:pt-0 font-bold mb-6 text-black">
           Available books
         </h1>
-        <button className="bg-blue-300 text-white px-5 py-2 rounded-xl hover:scale-105 transition fixed shadow-lg z-50 text-base sm:text-lg md:text-xl right-5 top-18 cursor-pointer">Add Book</button>
+        <AddBookButton onClick = {()=> setShowBooksModal(true)}/>
+        <AddBookModal 
+          isOpen = {showBooksModal}
+          onClose = {()=>setShowBooksModal(false)}        
+        />
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10">
           {
             books.map((book)=> (
