@@ -8,10 +8,12 @@ import BookCard from "../components/BookCard";
 import AddBookButton from "../components/AddBookButton";
 import { useState } from "react";
 import AddBookModal from "../components/AddBookModal";
+import BookModal from "../components/BookModal";
 
 const Books = () => {
   const [showBooksModal, setShowBooksModal] = useState("")
-
+  const [selectedBook, setSelectedBook] = useState(null)
+  
   const books = [
     {
       id:1,
@@ -60,10 +62,16 @@ const Books = () => {
               <BookCard
                 key={book.id}
                 book={book}
+                onClick= {()=>setSelectedBook(book)}
               />
             ))
           }
         </div>
+        <BookModal
+          book={selectedBook}
+          isOpen={!!selectedBook}
+          onClose={()=>setSelectedBook(null)}
+        />
       </div>
       <Footer />
     </section>
