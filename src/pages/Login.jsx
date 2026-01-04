@@ -26,7 +26,6 @@ const Login = () => {
       toast.success(result.msg)
       navigate("/books")
     } catch (error) {
-      console.log(error);
       toast.error(error.error || "Login failed, incorrect credentials entered!")
     }
   }
