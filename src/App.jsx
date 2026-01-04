@@ -5,6 +5,7 @@ import Landing from "../src/pages/Landing"
 import Books from "../src/pages/Books"
 import Login from "../src/pages/Login"
 import Signup from "../src/pages/Signup"
+import ProtectedRoute from "./components/ProtectedRoute"
 
 function App() {
 
@@ -18,7 +19,11 @@ function App() {
           />
           <Route
             path = "/books"
-            element={<Books />}
+            element={
+              <ProtectedRoute>
+                <Books />
+              </ProtectedRoute>
+          }
           />
           <Route
             path = "/login"
