@@ -3,28 +3,42 @@ import AuthForm from "../components/AuthForm";
 import Footer from "../components/Footer";
 import InputField from "../components/InputField";
 import Navbar from "../components/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MotionWrapper from "../components/MotionWrapper";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../redux/thunks/authThunk";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const [fullname, setFullname] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const submitHandler = () => {}
+  const submitHandler = async (e) => {
+    e.preventDefault()
+    const user = { email,
+      password,
+      fullname
+      }
+    try {
+      const result = await dispatch(registerUser(user)).unwrap()
+      toast.success(result.msg)
+      navigate("/login")
+    } catch (error) {
+      console.log(error);
+      
+      toast.error("Registration failed")
+    }
+    
+  }
 
   const changeHandler = (e) => {
-    if (e.target == "fullname") {
-      setFullname(e.target.value)
-    }
-
-    if (e.target == "email") {
-      setEmail(e.target.value)
-    }
-
-    if (e.target == "password") {
-      setPassword(e.target.value)
-    }
+    const {name, value} = e.target
+    if (name == "fullname") setFullname(value)
+    if (name == "email") setEmail(value)
+    if (name == "password") setPassword(value)
   }
 
   return(
@@ -44,6 +58,8 @@ const Signup = () => {
         >
           <InputField 
             label="Fullname"
+            name="fullname"
+            type="text"
             value={fullname}
             onChange={changeHandler}
             placeHolder="Your fullname"
@@ -51,6 +67,7 @@ const Signup = () => {
           <InputField 
             label="email"
             type="email"
+            name="email"
             value={email}
             onChange={changeHandler}
             placeHolder="you@gmail.com"
@@ -58,6 +75,7 @@ const Signup = () => {
           <InputField 
             label="password"
             type="password"
+            name="password"
             value={password}
             onChange={changeHandler}
             placeHolder="*********"
