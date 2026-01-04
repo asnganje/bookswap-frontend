@@ -3,6 +3,7 @@ const InputField = ({
   type="text",
   value,
   onChange,
+  name,
   placeHolder,
   required = true
 }) => {
@@ -11,6 +12,7 @@ const InputField = ({
       <label className="text-sm text-muted">{label}</label>
       <input
         type={type}
+        name={name}
         value={value}
         onChange={onChange}
         placeholder={placeHolder}
