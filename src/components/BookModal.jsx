@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import InputField from "./InputField";
-import MotionWrapper from "./MotionWrapper";
-import { XMarkIcon } from "@heroicons/react/16/solid";
 
 const BookModal = ({isOpen, onClose, book}) => {
   
