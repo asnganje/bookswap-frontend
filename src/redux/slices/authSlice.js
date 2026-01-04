@@ -6,7 +6,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     user:null,
-    token:localStorage.get("token"),
+    token:localStorage.getItem("token"),
     loading: false,
     msg:"",
     error:null
@@ -26,6 +26,7 @@ const authSlice = createSlice({
     .addCase(registerUser.fulfilled, (state, action)=> {
       state.loading = false;
       state.user = action.payload.user
+      state.msg=action.payload.msg
     })
     .addCase(registerUser.rejected, (state, action)=> {
       state.loading = false;
