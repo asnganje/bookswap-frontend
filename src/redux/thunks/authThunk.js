@@ -7,6 +7,11 @@ export const registerUser = createAsyncThunk("auth/registerUser",
     try {
       const response = await api.post("/users", {
         user:payload
+      },
+      {
+        headers: {
+          "Content-Type": "application/json", Accept:"application/json"
+        }
       })
       return response.data
 
@@ -21,7 +26,14 @@ export const loginUser = createAsyncThunk("auth/loginUser",
     try {
       const response = await api.post("/users/sign_in", {
         user:payload
-      })
+      },
+      {
+        headers: {
+          "Content-Type": "application/json", Accept:"application/json"
+        }
+      }
+    
+    )
       return response.data
 
     } catch (error) {

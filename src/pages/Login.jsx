@@ -1,23 +1,40 @@
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import AuthForm from "../components/AuthForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InputField from "../components/InputField"
 import { useState } from "react";
 import MotionWrapper from "../components/MotionWrapper";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../redux/thunks/authThunk";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const submitHandler = () =>{}
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const submitHandler = async (e) =>{
+    e.preventDefault()
+    const user = {
+      email,
+      password
+    }
+    try {
+      const result = await dispatch(loginUser(user)).unwrap()
+      toast.success(result.msg)
+      navigate("/books")
+    } catch (error) {
+      console.log(error);
+      toast.error(error.error || "Login failed, incorrect credentials entered!")
+    }
+  }
+
   const changeHandler = (e) =>{
-    if(e.target == "email") {
-      setEmail(e.target.value)
-    }
-    if(e.target == "password") {
-      setPassword(e.target.value)
-    }
-    
+    const {name, value} = e.target
+    if(name == "email") setEmail(value)
+    if(name == "password") setPassword(value)    
   }
   return(
     <MotionWrapper className="">
@@ -39,6 +56,7 @@ const Login = () => {
           <InputField 
             label="email"
             type="email"
+            name="email"
             value={email}
             onChange={changeHandler}
             placeHolder="oscar@gmail.com"
@@ -46,6 +64,7 @@ const Login = () => {
           <InputField 
             label="password"
             type="password"
+            name="password"
             value={password}
             onChange={changeHandler}
             placeHolder="*********"
