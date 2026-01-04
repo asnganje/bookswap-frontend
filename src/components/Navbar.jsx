@@ -1,21 +1,28 @@
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../redux/slices/authSlice";
+import { useState } from "react";
+import { UserCircleIcon } from "@heroicons/react/16/solid";
+import { toast } from "react-toastify";
+import logo from "../assets/bkswap.JPG"
 
 const Navbar = () => {
   const name = localStorage.getItem("user")
+  const [visible, setVisible] = useState(false)
+  const navigate = useNavigate()
+
   const dispatch = useDispatch()
   const logoutHandler = () => {
     dispatch(logout())
+    navigate("/")
+    toast.success("Logged out successfully")
   }
   return (
     <nav className="fixed w-full z-50 bg-gray-900/80 backdrop-blur">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between">
-        <span className="text-white font-bold text-xl">
-          <Link to="/">
-            BookSwap
-          </Link>
-        </span>
+        <Link to="/" className="flex items-center justify-center">
+          <img src={logo} alt="" className="w-10 h-8" />
+        </Link>
         {
           !name?
           (<div className="space-x-6 text-muted text-blue-300">
@@ -23,10 +30,34 @@ const Navbar = () => {
           <Link to="/login" className="hover:text-white font-bold">Login</Link>
           <Link to="/register" className="hover:text-white font-bold">Signup</Link>
         </div>): 
-          (<div className="space-x-6 text-muted text-blue-300">
+          (<div className="flex items-center justify-center space-x-6 text-muted text-blue-300">
           <Link to="/books" className="hover:text-white font-bold">Books</Link>
-          <button onClick={logoutHandler} className="hover:text-white cursor-pointer font-bold">Logout</button>
-          <Link to="#" className="hover:text-white font-bold">{name}</Link>
+          <div className="relative">
+            <button onClick={()=>setVisible(prev=>!prev)}
+              className="flex items-center gap-2 cursor-pointer"
+            >
+              <UserCircleIcon className="h-8 w-8" />
+            </button>
+            {
+              visible && (
+                <div 
+                  className="absolute -right-10 w-48 z-50 bg-white rounded-xl shadow-lg border overflow-hidden"
+                  onMouseLeave={()=>setVisible(false)}
+                >
+                  <div className="px-4 py-3 text-sm font-semibold border-b hover:bg-gray-300 cursor-pointer">
+                    {name}
+                  </div>
+                  <Link
+                    to="#"
+                    className="block px-4 py-3 text-sm hover:bg-gray-300"
+                  >
+                    Swap requests
+                  </Link>
+                  <button onClick={logoutHandler} className="w-full text-left px-4 py-3 text-sm text-red-300 hover:bg-gray-300 cursor-pointer">Logout</button>
+                </div>
+              )
+            }
+          </div>
         </div>)
         }
       </div>
