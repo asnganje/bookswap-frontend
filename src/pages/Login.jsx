@@ -22,11 +22,12 @@ const Login = () => {
       password
     }
     try {
-      const result = await dispatch(loginUser(user)).unwrap()
+      
+      const result = await dispatch(loginUser(user)).unwrap()      
       toast.success(result.msg)
       navigate("/books")
     } catch (error) {
-      toast.error(error.error || "Login failed, incorrect credentials entered!")
+      toast.error(error.error || "Login failed!")
     }
   }
 

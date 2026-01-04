@@ -33,7 +33,7 @@ export const loginUser = createAsyncThunk("auth/loginUser",
         }
       }
     
-    )
+    )    
       return response.data
 
     } catch (error) {

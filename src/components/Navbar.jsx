@@ -1,9 +1,9 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../redux/slices/authSlice";
 
 const Navbar = () => {
-  const { user } = useSelector((state)=>state.auth)
+  const name = localStorage.getItem("user")
   const dispatch = useDispatch()
   const logoutHandler = () => {
     dispatch(logout())
@@ -17,7 +17,7 @@ const Navbar = () => {
           </Link>
         </span>
         {
-          !user?
+          !name?
           (<div className="space-x-6 text-muted text-blue-300">
           <Link to="/books" className="hover:text-white font-bold">Books</Link>
           <Link to="/login" className="hover:text-white font-bold">Login</Link>
@@ -26,7 +26,7 @@ const Navbar = () => {
           (<div className="space-x-6 text-muted text-blue-300">
           <Link to="/books" className="hover:text-white font-bold">Books</Link>
           <button onClick={logoutHandler} className="hover:text-white cursor-pointer font-bold">Logout</button>
-          <Link to="#" className="hover:text-white font-bold">{user.fullname}</Link>
+          <Link to="#" className="hover:text-white font-bold">{name}</Link>
         </div>)
         }
       </div>
