@@ -1,9 +1,5 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-// import book from "../assets/coding.jpg"
-// import success from "../assets/success.jpg"
-// import edge from "../assets/edge.jpg"
-// import artOfLove from "../assets/artOfLove.jpg"
 import BookCard from "../components/BookCard";
 import AddBookButton from "../components/AddBookButton";
 import { useEffect, useState } from "react";
@@ -18,7 +14,7 @@ const Books = () => {
   const dispatch = useDispatch()
 
   const { books } = useSelector((state)=>state.books)
-
+  
   useEffect(()=> {
     dispatch(getBooks())
   },[dispatch])
@@ -56,7 +52,7 @@ const Books = () => {
   return (
     <section className="bg-gray-200">
       <Navbar />
-      <div className="max-w-7xl mx-auto pt-16 px-6 min-h-[90vh]">
+      <div className="max-w-7xl mx-auto pt-16 px-6 min-h-screen">
         <h1 className="text-lg md:text-4xl pt-4 md:pt-0 font-bold mb-6 text-black">
           Available books
         </h1>

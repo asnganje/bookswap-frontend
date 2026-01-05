@@ -5,7 +5,7 @@ const BookCard = ({book, onClick}) => {
     <MotionWrapper>
     <div className="relative md:h-60 max-w-md md:w-40 mx-auto md:mx-0 cursor-pointer">
       <img
-        src={book.image} 
+        src={book.image_url} 
         alt={book.title}
         className="h-90 md:h-full w-full object-cover" 
       />

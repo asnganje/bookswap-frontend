@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import InputField from "./InputField";
+import { useDispatch } from "react-redux";
+import { deleteBook } from "../redux/thunks/booksThunk";
+import { toast } from "react-toastify";
 
 const BookModal = ({isOpen, onClose, book}) => {
   
   const [title, setTitle] = useState(book?.title || "")
   const [author, setAuthor] = useState(book?.author || "")
   const [genre, setGenre] = useState(book?.genre || "")
+  const dispatch = useDispatch()
 
   useEffect(()=> {
     if(book) {
@@ -16,6 +20,15 @@ const BookModal = ({isOpen, onClose, book}) => {
     }
   }, [book])
   
+  const deleteHandler = async () => {
+    try {      
+      await dispatch(deleteBook(book.id)).unwrap() 
+      toast.success("Book deleted!")
+      onClose()
+    } catch (error) {
+      toast.error(error.message || "Delete failed")
+    }
+  }
   return(
     <Modal isOpen={isOpen} onClose={onClose}>
       <img
@@ -40,6 +53,7 @@ const BookModal = ({isOpen, onClose, book}) => {
       <div className="flex justify-between mt-6">
         <button
           className="bg-red-400 text-white px-3 py-2 rounded-xl hover:opacity-90 transition cursor-pointer hover:scale-105"
+          onClick={deleteHandler}
         >
           Delete
         </button>

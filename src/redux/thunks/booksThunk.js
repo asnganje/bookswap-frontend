@@ -48,8 +48,8 @@ export const updateBook = createAsyncThunk("books/updateBook",
 export const deleteBook = createAsyncThunk("books/deleteBook", 
   async (payload, {rejectWithValue})=> {
     try {
-      const response = await api.delete(`/books/${payload}`)
-      return response.data
+      await api.delete(`/books/${payload}`)
+      return payload
     } catch (error) {
       return rejectWithValue(error?.response?.data)
     }
