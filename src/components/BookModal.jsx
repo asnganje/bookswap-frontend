@@ -32,7 +32,7 @@ const BookModal = ({isOpen, onClose, book}) => {
   return(
     <Modal isOpen={isOpen} onClose={onClose}>
       <img
-        src={book?.image}
+        src={book?.image_url}
         className="w-full h-64 object-cover rounded-xl mb-2"
       />
       <InputField
