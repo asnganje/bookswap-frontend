@@ -18,41 +18,10 @@ const Books = () => {
   useEffect(()=> {
     dispatch(getBooks())
   },[dispatch])
-  
-  // const books1 = [
-  //   {
-  //     id:1,
-  //     title:"Coding backend",
-  //     author:"promise ukay",
-  //     genre:"Technology",
-  //     image: book
-  //   },
-  //   {
-  //     id:2,
-  //     title:"Business management",
-  //     author:"Kevoo Software",
-  //     genre:"Business",
-  //     image: success
-  //   },
-  //   {
-  //     id:3,
-  //     title:"The art of love",
-  //     author:"Josephine Nthiga",
-  //     genre:"Love story",
-  //     image: artOfLove
-  //   },
-  //   {
-  //     id:4,
-  //     title:"The edge of the unknown",
-  //     author:"Abdul Auf",
-  //     genre:"History",
-  //     image: edge
-  //   }
-  // ]
   return (
-    <section className="bg-gray-200">
+    <section className="flex flex-col bg-gray-200 min-h-screen">
       <Navbar />
-      <div className="max-w-7xl mx-auto pt-16 px-6 min-h-screen">
+      <div className="flex-1 max-w-7xl mx-auto pt-16 px-6">
         <h1 className="text-lg md:text-4xl pt-4 md:pt-0 font-bold mb-6 text-black">
           Available books
         </h1>
@@ -61,7 +30,7 @@ const Books = () => {
           isOpen = {showBooksModal}
           onClose = {()=>setShowBooksModal(false)}        
         />
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
           {
             books.map((book)=> (
               <BookCard
