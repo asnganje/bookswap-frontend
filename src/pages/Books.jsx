@@ -1,49 +1,58 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import book from "../assets/coding.jpg"
-import success from "../assets/success.jpg"
-import edge from "../assets/edge.jpg"
-import artOfLove from "../assets/artOfLove.jpg"
+// import book from "../assets/coding.jpg"
+// import success from "../assets/success.jpg"
+// import edge from "../assets/edge.jpg"
+// import artOfLove from "../assets/artOfLove.jpg"
 import BookCard from "../components/BookCard";
 import AddBookButton from "../components/AddBookButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddBookModal from "../components/AddBookModal";
 import BookModal from "../components/BookModal";
+import { useDispatch, useSelector } from "react-redux";
+import { getBooks } from "../redux/thunks/booksThunk";
 
 const Books = () => {
   const [showBooksModal, setShowBooksModal] = useState("")
   const [selectedBook, setSelectedBook] = useState(null)
+  const dispatch = useDispatch()
+
+  const { books } = useSelector((state)=>state.books)
+
+  useEffect(()=> {
+    dispatch(getBooks())
+  },[dispatch])
   
-  const books = [
-    {
-      id:1,
-      title:"Coding backend",
-      author:"promise ukay",
-      genre:"Technology",
-      image: book
-    },
-    {
-      id:2,
-      title:"Business management",
-      author:"Kevoo Software",
-      genre:"Business",
-      image: success
-    },
-    {
-      id:3,
-      title:"The art of love",
-      author:"Josephine Nthiga",
-      genre:"Love story",
-      image: artOfLove
-    },
-    {
-      id:4,
-      title:"The edge of the unknown",
-      author:"Abdul Auf",
-      genre:"History",
-      image: edge
-    }
-  ]
+  // const books1 = [
+  //   {
+  //     id:1,
+  //     title:"Coding backend",
+  //     author:"promise ukay",
+  //     genre:"Technology",
+  //     image: book
+  //   },
+  //   {
+  //     id:2,
+  //     title:"Business management",
+  //     author:"Kevoo Software",
+  //     genre:"Business",
+  //     image: success
+  //   },
+  //   {
+  //     id:3,
+  //     title:"The art of love",
+  //     author:"Josephine Nthiga",
+  //     genre:"Love story",
+  //     image: artOfLove
+  //   },
+  //   {
+  //     id:4,
+  //     title:"The edge of the unknown",
+  //     author:"Abdul Auf",
+  //     genre:"History",
+  //     image: edge
+  //   }
+  // ]
   return (
     <section className="bg-gray-200">
       <Navbar />

@@ -3,6 +3,9 @@ import InputField from "./InputField"
 import { useState } from "react";
 import { PaperClipIcon, XMarkIcon } from "@heroicons/react/16/solid";
 import MotionWrapper from "./MotionWrapper";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { createBook } from "../redux/thunks/booksThunk";
 
 const GENRES = [
   "Technology",
@@ -20,14 +23,22 @@ const AddBookModal = ({isOpen, onClose}) => {
   const [author, setAuthor] = useState("")
   const [genre, setGenre] = useState("")
   const [image, setImage ] = useState("")
+  const dispatch = useDispatch()
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault()
     const formData = new FormData();
     formData.append("book[title]", title)
     formData.append("book[author]", author)
     formData.append("book[genre]", genre)
     if(image) formData.append("book[image]", image)
+    try {
+      await dispatch(createBook(formData)).unwrap()
+      toast.success("Book added successfully")
+      onClose()
+    } catch (error) {
+      toast.error(error.msg || "Could not add the book")
+    }
   }
   return (
     <Modal
