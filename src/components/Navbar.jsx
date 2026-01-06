@@ -48,7 +48,7 @@ const Navbar = () => {
                     {name}
                   </div>
                   <Link
-                    to="#"
+                    to="/book-swaps"
                     className="block px-4 py-3 text-sm hover:bg-gray-300"
                   >
                     Swap requests

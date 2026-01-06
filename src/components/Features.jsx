@@ -32,7 +32,7 @@ const Features = () => {
         <div className="grid md:grid-cols-3 gap-12">
           {
             features.map((feature, idx) => (
-              <MotionWrapper key={idx} delay={idx*3}>
+              <MotionWrapper key={idx} delay={idx*2}>
                 <div className="bg-white rounded-xl shadow hover:shadow-xl transition p-5 cursor-pointer">
                   <feature.icon className="w-10 h-10 text-blue-300"/>
                   <h3 className="mt-6 font-semibold text-xl">{feature.title}</h3>

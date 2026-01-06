@@ -6,6 +6,7 @@ import Books from "../src/pages/Books"
 import Login from "../src/pages/Login"
 import Signup from "../src/pages/Signup"
 import ProtectedRoute from "./components/ProtectedRoute"
+import BookSwaps from "./components/BookSwaps"
 
 function App() {
 
@@ -24,6 +25,10 @@ function App() {
                 <Books />
               </ProtectedRoute>
           }
+          />
+          <Route
+            path = "/book-swaps"
+            element={<BookSwaps />}
           />
           <Route
             path = "/login"

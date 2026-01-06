@@ -1,6 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import MotionWrapper from "./MotionWrapper";
 
 const BookCard = ({book, onClick}) => {
+  const navigate = useNavigate()
+  const swapNavigator = () => {
+    navigate("/book-swaps")
+  }
+
   return(
     <MotionWrapper>
     <div className="relative flex flex-col items-center justify-center max-w-md mx-auto md:mx-0 cursor-pointer md:mb-5">
@@ -17,6 +23,7 @@ const BookCard = ({book, onClick}) => {
         <p className="text-sm">By {book.author}</p>
         <div className="">
           <button
+            onClick={swapNavigator}
             className="bg-blue-300 mt-5 w-[80%] cursor-pointer text-white py-2 rounded-lg transform transition-transform duration-300 hover:scale-105"
           >
             Request swap
