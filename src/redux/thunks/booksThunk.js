@@ -35,7 +35,7 @@ export const getBooks = createAsyncThunk("books/getBooks",
 )
 
 export const updateBook = createAsyncThunk("books/updateBook", 
-  async ({data, id}, {rejectWithValue})=> {
+  async ({data, id}, {rejectWithValue})=> {    
     try {
       const response = await api.put(`/books/${id}`, data)
       return response.data

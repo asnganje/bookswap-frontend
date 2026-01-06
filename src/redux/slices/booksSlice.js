@@ -49,7 +49,7 @@ const booksSlice = createSlice({
       state.loading = true;
     })
     .addCase(updateBook.fulfilled, (state, action)=> {
-      state.loading = false;
+      state.loading = false;      
       state.books = state.books.map((book)=> book.id == action.payload.id ? action.payload : book)
     })
     .addCase(updateBook.rejected, (state, action)=> {

@@ -18,7 +18,7 @@ const Modal = ({isOpen, onClose, children}) => {
           initial={{scale:0.9, opacity:0}}
           animate={{scale:1, opacity:1}}
           exit={{scale:0.9, opacity:0}}
-          className="bg-white rounded-3xl shadow-xl w-full max-w-lg p-8"
+          className="bg-white rounded-3xl shadow-xl w-full max-w-lg p-6"
         >
           {children}
         </motion.div>

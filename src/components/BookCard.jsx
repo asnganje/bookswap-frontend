@@ -9,7 +9,7 @@ const BookCard = ({book, onClick}) => {
         alt={book.title}
         className="h-80 w-[80%] object-cover" 
       />
-      <div onClick={onClick} className="absolute flex items-center justify-center font-semibold opacity-0 hover:opacity-100 transition-opacity text-sm text-white inset-0 bg-black/50">
+      <div onClick={onClick} className="absolute flex items-center justify-center font-semibold opacity-0 hover:opacity-100 transition-opacity text-sm text-white inset-0 h-[75%] w-[80%] mx-auto bg-black/50">
         Click to view
       </div>
       <div className="p-1 w-[80%]">
