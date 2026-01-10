@@ -27,7 +27,7 @@ const Signup = () => {
       toast.success(result.msg)
       navigate("/login")
     } catch (error) {
-      toast.error(error.error || "Registration failed")
+      toast.error(error.error || "Registration failed!")
     }
     
   }
