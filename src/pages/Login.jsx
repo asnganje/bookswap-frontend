@@ -45,7 +45,7 @@ const Login = () => {
           title="LOGIN"
           onSubmit={submitHandler}
           disabled={loading}
-          btnText={loading? "Logging you in...":"Register"}
+          btnText={loading? "Logging you in...":"Login"}
           footer={
             <>
               Don't have an account? {"  "}
