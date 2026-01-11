@@ -1,6 +1,6 @@
 import MotionWrapper from "./MotionWrapper";
 
-const AuthForm = ({title, children, onSubmit, btnText, footer}) => {
+const AuthForm = ({title, children, onSubmit, btnText, footer, disabled}) => {
   return(
     <form
       onSubmit={onSubmit}
@@ -9,6 +9,7 @@ const AuthForm = ({title, children, onSubmit, btnText, footer}) => {
       <h1 className="text-3xl font-bold text-white mb-4">{title}</h1>
       <div className="space-y-2">{children}</div>
       <button
+        disabled={disabled}
         type="submit"
         className="mt-8 w-full py-3 bg-blue-300 rounded-xl cursor-pointer font-semibold hover:opacity-90 transition"
       >

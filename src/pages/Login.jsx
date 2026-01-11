@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import InputField from "../components/InputField"
 import { useState } from "react";
 import MotionWrapper from "../components/MotionWrapper";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../redux/thunks/authThunk";
 import { toast } from "react-toastify";
 
@@ -14,6 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState("")
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const {loading} = useSelector((state)=>state.auth)
 
   const submitHandler = async (e) =>{
     e.preventDefault()
@@ -43,7 +44,8 @@ const Login = () => {
         <AuthForm
           title="LOGIN"
           onSubmit={submitHandler}
-          btnText="Login"
+          disabled={loading}
+          btnText={loading? "Logging you in...":"Register"}
           footer={
             <>
               Don't have an account? {"  "}
