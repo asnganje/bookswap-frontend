@@ -9,7 +9,7 @@ const InputField = ({
 }) => {
   return(
     <div className="flex flex-col gap-1">
-      <label className="text-sm text-muted">{label}</label>
+      <label className="text-sm text-muted text-white">{label}</label>
       <input
         type={type}
         name={name}
