@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 const DropModal = ({name, logout, closeMenu}) => {
   return (
     <div className="md:hidden fixed left-0 right-0 bottom-0 top-17 h-screen">
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm pl-10 pr-5">
+      <div 
+      className="absolute inset-0 bg-black/80 backdrop-blur-sm pl-10 pr-5"
+      onClick={closeMenu}
+      >
       <div
         className="absolute top-0 right-5 bg-white flex flex-col w-50"
       >
