@@ -5,7 +5,7 @@ import { useState } from "react";
 import { UserCircleIcon } from "@heroicons/react/16/solid";
 import { toast } from "react-toastify";
 import logo from "../assets/bkswap.JPG";
-import Hamburger from "../assets/hamburger";
+import Hamburger from "../assets/Hamburger";
 import XIcon from "../assets/XIcon";
 import DropModal from "./DropModal";
 
